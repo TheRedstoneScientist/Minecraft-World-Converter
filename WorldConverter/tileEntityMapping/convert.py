@@ -46,7 +46,9 @@ def convertBlockEntity(convertFrom, convertTo, te):
 				del te['mData']
 			else:
 				itemData = 0
-				
+		
+		#this code try is temporary until we can figure out item conversion problems
+		try:
 		itemIDNew, itemDataNew = convertItem(convertFrom, convertTo, itemID, itemData)
 		
 		if convertTo == 'PC':
@@ -55,6 +57,8 @@ def convertBlockEntity(convertFrom, convertTo, te):
 		elif convertTo == 'PE':
 			te['item'] = TAG_Short(itemIDNew)
 			te['mData'] = TAG_Int(itemDataNew)
+		except:
+			pass
 			
 	elif intermediateID == 'minecraft:bed':
 		if convertFrom in ['PC', 'PE']:
